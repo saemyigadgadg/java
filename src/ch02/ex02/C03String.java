@@ -11,6 +11,9 @@ public class C03String {
 		String sumStr = "" + sum;
 		System.out.println(sumStr);
 		
+		int i = Integer.parseInt(sumStr);
+		System.out.println(i);
+		
 		String s = a + b + "";
 		System.out.println(s);
 		//console에 보이는 것은 숫자 3이 아닌 문자 3이다.
