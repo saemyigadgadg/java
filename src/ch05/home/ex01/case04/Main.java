@@ -7,20 +7,36 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		User user = new User();
-		String username = "";
 		boolean isGood = false;
+		String userName = "";
+		String ageStr = "";
+		int ageInt = 0;
+		String errMsg = "input 0 or natural number.";
 		
-			System.out.print("이름: "); 
-			user.setUserName(sc.nextLine());
+			do {
+				isGood = false;
+				System.out.print("이름: "); 
+				user.setUserName(userName = sc.nextLine());
+				isGood = userName.matches("[a-zA-Z]+");
+			}while(!isGood);
+		
+			do {
+				isGood = false;
+				System.out.print("나이: ");
+				user.setAge(ageStr = sc.nextLine());
+				isGood = ageStr.matches("[0-9]+");
+				if(isGood) ageInt = Integer.parseInt(ageStr);
+				else System.out.println(errMsg);
+			} while(!isGood);
 			
-			System.out.print("나이: ");
-			user.setAge(sc.nextInt());
 			user.setJoinDate(LocalDate.now());
-		
+			
+			
 		System.out.println();
 		System.out.printf("이름: %s\n", user.getUserName());
-		System.out.printf("나이: %d\n", user.getAge());
-		System.out.print("가입일:" + user.getJoinDate());
+		System.out.printf("나이: %s\n", user.getAge());
+		System.out.print("가입일: " + user.getJoinDate());
+		
 	}
 }
 
